@@ -19,7 +19,7 @@ export function Glow({ className }: GlowProps) {
   return (
     <svg
       className={cn(styles.glow, className)}
-      viewBox="142 60 300 322"
+      viewBox="205 165 180 217"
       aria-hidden
       role="presentation"
     >
