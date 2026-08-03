@@ -10,44 +10,35 @@ function Showcase() {
   }, [theme]);
 
   return (
-    <div className="flex h-screen">
-      {/* Sidebar — half the screen, showing the noise + visible lava */}
-      <aside className="w-1/2">
-        <Backdrop className="h-full">
-          <div className="flex h-full flex-col justify-between p-12">
-            <div>
-              <p className="font-mono text-sm uppercase tracking-wide text-accent">film ui</p>
-              <h1 className="mt-3 font-title text-5xl font-bold leading-tight">
-                Frosted.
-                <br />
-                Noisy.
-                <br />
-                Cosy.
-              </h1>
-            </div>
-            <button
-              type="button"
-              onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
-              className="self-start font-mono text-sm lowercase text-accent"
-            >
-              theme: {theme}
-            </button>
-          </div>
-        </Backdrop>
-      </aside>
-
-      {/* Content — a frosted Glass panel */}
-      <main className="flex w-1/2 items-center justify-center bg-bg p-12">
-        <Glass className="w-full max-w-md p-10">
-          <p className="font-mono text-sm uppercase tracking-wide text-accent">glass</p>
-          <h2 className="mt-2 font-title text-2xl font-bold">The frosted surface</h2>
-          <p className="mt-3 opacity-80">
-            A translucent panel over the noisy, glowing sidebar — the core building block for cards
-            and pages.
+    <Backdrop className="h-screen">
+      <div className="flex h-screen">
+        {/* Left half — a frosted panel; the lava's left half shows through the glass */}
+        <Glass className="flex w-1/2 flex-col justify-center gap-3 p-12">
+          <p className="font-mono text-sm uppercase tracking-wide text-accent">film ui</p>
+          <h1 className="font-title text-5xl font-bold leading-tight">
+            Frosted.
+            <br />
+            Noisy.
+            <br />
+            Cosy.
+          </h1>
+          <p className="max-w-sm opacity-80">
+            The lava lamp sits at the centre of the page — its left half diffused through this frosted
+            panel, its right half glowing raw over the noisy background.
           </p>
+          <button
+            type="button"
+            onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
+            className="mt-2 self-start font-mono text-sm lowercase text-accent"
+          >
+            theme: {theme}
+          </button>
         </Glass>
-      </main>
-    </div>
+
+        {/* Right half — open noisy background */}
+        <div className="w-1/2" />
+      </div>
+    </Backdrop>
   );
 }
 
