@@ -21,8 +21,10 @@
   // Natural 450×450 paper tile, like the CV (no background-size override).
 }
 
-// On a light background the CV uses a darker paper texture at lower opacity.
-:root:not(.dark) .grain::after {
+// On a light background the CV uses a different paper texture at lower opacity.
+// `.dark` must be :global — otherwise CSS modules hash it and this always
+// matches, wrongly using the light texture in dark mode too.
+:root:not(:global(.dark)) .grain::after {
   background-image: url('../../assets/paper-light.png');
   opacity: var(--fui-grain-opacity, 0.2);
 }
