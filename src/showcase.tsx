@@ -10,32 +10,44 @@ function Showcase() {
   }, [theme]);
 
   return (
-    <Backdrop>
-      <div className="flex min-h-screen flex-col items-center justify-center gap-8 p-6">
-        <button
-          type="button"
-          onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
-          className="font-mono text-sm lowercase text-accent"
-        >
-          theme: {theme}
-        </button>
+    <div className="flex h-screen">
+      {/* Sidebar — half the screen, showing the noise + visible lava */}
+      <aside className="w-1/2">
+        <Backdrop className="h-full">
+          <div className="flex h-full flex-col justify-between p-12">
+            <div>
+              <p className="font-mono text-sm uppercase tracking-wide text-accent">film ui</p>
+              <h1 className="mt-3 font-title text-5xl font-bold leading-tight">
+                Frosted.
+                <br />
+                Noisy.
+                <br />
+                Cosy.
+              </h1>
+            </div>
+            <button
+              type="button"
+              onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
+              className="self-start font-mono text-sm lowercase text-accent"
+            >
+              theme: {theme}
+            </button>
+          </div>
+        </Backdrop>
+      </aside>
 
-        <Glass className="max-w-2xl p-12">
-          <p className="font-mono text-sm uppercase tracking-wide text-accent">film ui</p>
-          <h1 className="mt-2 font-title text-4xl font-bold">Frosted. Noisy. Cosy.</h1>
-          <p className="mt-4 opacity-80">
-            A glossy, transparent surface floating over drifting film grain and a lava-lamp glow.
-            Toggle the theme — the whole scene retints.
+      {/* Content — a frosted Glass panel */}
+      <main className="flex w-1/2 items-center justify-center bg-bg p-12">
+        <Glass className="w-full max-w-md p-10">
+          <p className="font-mono text-sm uppercase tracking-wide text-accent">glass</p>
+          <h2 className="mt-2 font-title text-2xl font-bold">The frosted surface</h2>
+          <p className="mt-3 opacity-80">
+            A translucent panel over the noisy, glowing sidebar — the core building block for cards
+            and pages.
           </p>
         </Glass>
-
-        <div className="flex flex-wrap justify-center gap-6">
-          <Glass className="px-6 py-4 font-mono text-sm lowercase">grain</Glass>
-          <Glass className="px-6 py-4 font-mono text-sm lowercase">glow</Glass>
-          <Glass className="px-6 py-4 font-mono text-sm lowercase">glass</Glass>
-        </div>
-      </div>
-    </Backdrop>
+      </main>
+    </div>
   );
 }
 

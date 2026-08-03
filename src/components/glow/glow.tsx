@@ -15,12 +15,11 @@ export function Glow({ className }: GlowProps) {
   const uid = useId().replace(/:/g, '');
   const goo = `goo-${uid}`;
   const clip = `clip-${uid}`;
-  const grad = `grad-${uid}`;
 
   return (
     <svg
       className={cn(styles.glow, className)}
-      viewBox="0 0 600 600"
+      viewBox="142 60 300 370"
       aria-hidden
       role="presentation"
     >
@@ -39,17 +38,7 @@ export function Glow({ className }: GlowProps) {
         <clipPath id={clip}>
           <path d="M262,174h60l33.5,182.3c0,0,2.7,12.8,2.5,22.8c-7.5,0-131,0-131,0s-0.7-9.3,0-18C227.6,352.9,262,174,262,174z" />
         </clipPath>
-
-        <radialGradient id={grad} cx="300" cy="300" r="400" gradientUnits="userSpaceOnUse">
-          <stop offset="0.0714" stopColor="currentColor" stopOpacity="0.19" />
-          <stop offset="0.3107" stopColor="currentColor" stopOpacity="0.13" />
-          <stop offset="0.553" stopColor="currentColor" stopOpacity="0.06" />
-          <stop offset="0.7828" stopColor="currentColor" stopOpacity="0.02" />
-          <stop offset="0.9847" stopColor="currentColor" stopOpacity="0" />
-        </radialGradient>
       </defs>
-
-      <rect fill={`url(#${grad})`} width="600" height="600" />
 
       <g filter={`url(#${goo})`} clipPath={`url(#${clip})`} fill="currentColor">
         <path

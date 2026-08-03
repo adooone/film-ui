@@ -14,6 +14,7 @@ export interface GrainProps extends HTMLAttributes<HTMLDivElement> {
 export function Grain({ opacity, className, style, ...props }: GrainProps) {
   const vars =
     opacity != null ? ({ '--fui-grain-opacity': String(opacity) } as CSSProperties) : undefined;
+  // Default opacity lives in the SCSS (0.09) — override via the `opacity` prop.
 
   return (
     <div
