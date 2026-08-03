@@ -28,10 +28,12 @@
 .glowLayer svg {
   position: absolute;
   left: 50%;
-  bottom: 0;
-  height: 100%;
-  transform: translateX(-50%);
-  transform-origin: center bottom;
+  top: 50%;
+  // Taller than the viewport so the lamp overflows past the top and bottom
+  // edges — the blobs bleed off-screen instead of sitting in a gap.
+  height: 135%;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
   // A light blur keeps the lava soft while leaving the blobs readable.
   filter: blur(8px);
 }
