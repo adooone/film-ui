@@ -22,10 +22,7 @@ function Showcase() {
             <br />
             Cosy.
           </h1>
-          <p className="max-w-sm opacity-80">
-            The lava lamp sits at the centre of the page — its left half diffused through this
-            frosted panel, its right half glowing raw over the noisy background.
-          </p>
+          <p className="max-w-sm opacity-80">A glossy, noisy, cosy React component library.</p>
           <button
             type="button"
             onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
