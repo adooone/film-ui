@@ -16,19 +16,20 @@
 }
 
 // Smooth ambient halo rising from the bottom-centre — a CSS gradient, so it
-// has no hard edges (unlike an SVG rect).
+// has no hard edges (unlike an SVG rect). Tall and bright enough to bleed
+// through a frosted panel sitting over it.
 .glowLayer::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(55% 45% at 50% 95%, rgba(54, 206, 145, 0.2), transparent 72%);
+  background: radial-gradient(75% 80% at 50% 100%, rgba(54, 206, 145, 0.32), transparent 78%);
 }
 
 .glowLayer svg {
   position: absolute;
   left: 50%;
   bottom: 0;
-  height: 58%;
+  height: 100%;
   transform: translateX(-50%);
   transform-origin: center bottom;
   // A light blur keeps the lava soft while leaving the blobs readable.
