@@ -1,0 +1,23 @@
+@use '../../styles/tokens' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  padding: $space-6;
+  background-color: var(--fui-card-bg);
+  box-shadow: 3px 3px 0 0 var(--fui-shadow-color);
+  backdrop-filter: blur(8px);
+}
+
+.title {
+  margin: 0;
+  font-family: $font-family-title;
+  font-weight: 600;
+  font-size: $font-size-xl;
+}
+
+.body {
+  margin: 0;
+  opacity: 0.8;
+}

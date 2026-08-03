@@ -1,8 +1,17 @@
 import { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Backdrop, Glass } from './index';
+import { Backdrop, Button, Card, Glass } from './index';
 
 const navItems = ['foundations', 'components', 'tokens', 'docs'];
+
+function GalleryItem({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <h3 className="font-mono text-sm uppercase tracking-wide text-accent">{label}</h3>
+      <div className="mt-4 flex flex-wrap items-center gap-4">{children}</div>
+    </div>
+  );
+}
 
 function Showcase() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
@@ -57,8 +66,28 @@ function Showcase() {
           </div>
         </div>
 
-        {/* Right — frosted panel */}
-        <Glass className="w-1/2 p-12" />
+        {/* Right — frosted panel: the component gallery */}
+        <Glass className="flex w-1/2 flex-col gap-10 overflow-y-auto p-12">
+          <h2 className="font-title text-3xl font-bold">Components</h2>
+
+          <GalleryItem label="Button">
+            <Button>Primary</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button size="sm">Small</Button>
+            <Button disabled>Disabled</Button>
+          </GalleryItem>
+
+          <GalleryItem label="Card">
+            <Card className="max-w-xs">
+              <Card.Title>Frosted card</Card.Title>
+              <Card.Body>
+                A translucent surface with the film offset shadow, for grouping content.
+              </Card.Body>
+              <Button size="sm">Action</Button>
+            </Card>
+          </GalleryItem>
+        </Glass>
       </div>
     </Backdrop>
   );

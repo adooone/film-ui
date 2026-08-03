@@ -1,0 +1,75 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  border: none;
+  cursor: pointer;
+  font-family: $font-family-sans;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  outline: none;
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    background-color 200ms ease,
+    filter 200ms ease;
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.05);
+  }
+
+  // Hard offset shadow — the signature film-poster look.
+  &:active:not(:disabled) {
+    transform: translate(3px, 3px);
+    box-shadow: none !important;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// ─── Variants ──────────────────────────────────────────────────
+.primary {
+  background-color: var(--fui-accent);
+  color: #000;
+}
+
+.secondary {
+  background-color: var(--fui-surface);
+  color: var(--fui-text);
+  backdrop-filter: blur(12px);
+}
+
+.ghost {
+  background-color: transparent;
+  color: var(--fui-text);
+  box-shadow: inset 0 0 0 2px var(--fui-shadow-color) !important;
+}
+
+// ─── Sizes ─────────────────────────────────────────────────────
+.md {
+  padding: $space-2 $space-6;
+  font-size: $font-size-md;
+  box-shadow: 5px 5px 0 0 var(--fui-shadow-color);
+}
+
+.sm {
+  padding: $space-1 $space-4;
+  font-size: $font-size-sm;
+  box-shadow: 3px 3px 0 0 var(--fui-shadow-color);
+}
+
+.fullWidth {
+  width: 100%;
+}

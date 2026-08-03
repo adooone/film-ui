@@ -75,7 +75,9 @@
   --fui-scroller: #{$color-scroller-light};
   --fui-accent: #{$color-accent};
   --fui-glow: #{$color-glow};
+  --fui-shadow-color: #000;
   --fui-shadow-offset: 5px 5px 0 0 #000;
+  --fui-card-bg: rgba(255, 255, 255, 0.35);
 }
 
 .dark {
@@ -83,7 +85,9 @@
   --fui-text: #{$color-text-dark};
   --fui-surface: #{$color-surface-dark};
   --fui-scroller: #{$color-scroller-dark};
+  --fui-shadow-color: #fff;
   --fui-shadow-offset: 5px 5px 0 0 #fff;
+  --fui-card-bg: rgba(38, 38, 38, 0.5);
 }
 
 // ─── Base ──────────────────────────────────────────────────────
