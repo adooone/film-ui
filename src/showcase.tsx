@@ -23,8 +23,8 @@ function Showcase() {
             Cosy.
           </h1>
           <p className="max-w-sm opacity-80">
-            The lava lamp sits at the centre of the page — its left half diffused through this frosted
-            panel, its right half glowing raw over the noisy background.
+            The lava lamp sits at the centre of the page — its left half diffused through this
+            frosted panel, its right half glowing raw over the noisy background.
           </p>
           <button
             type="button"
