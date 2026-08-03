@@ -1,0 +1,24 @@
+@use 'tokens' as *;
+
+// ─── Focus ring ────────────────────────────────────────────────
+@mixin focus-ring {
+  outline: 2px solid $color-accent;
+  outline-offset: 2px;
+}
+
+// ─── Frosted glass ─────────────────────────────────────────────
+// The core "glossy transparent" surface: translucent fill behind a
+// heavy backdrop blur. Blur radius is var-backed so consumers can tune it.
+@mixin glass($blur: $blur-glass) {
+  background-color: var(--fui-surface);
+  backdrop-filter: blur(var(--fui-glass-blur, #{$blur}));
+  -webkit-backdrop-filter: blur(var(--fui-glass-blur, #{$blur}));
+  box-shadow: $glass-shadow;
+}
+
+// ─── Reduced motion ────────────────────────────────────────────
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

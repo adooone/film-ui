@@ -1,0 +1,104 @@
+@use './styles/tokens' as *;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// ─── Fonts ─────────────────────────────────────────────────────
+// Body — Montserrat Alternates
+@font-face {
+  font-family: 'Montserrat Alternates';
+  src: url('/fonts/montserrat-alternates-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat Alternates';
+  src: url('/fonts/montserrat-alternates-latin-500-normal.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat Alternates';
+  src: url('/fonts/montserrat-alternates-latin-600-normal.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat Alternates';
+  src: url('/fonts/montserrat-alternates-latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Titles — KyivType Serif
+@font-face {
+  font-family: 'KyivType Serif';
+  src: url('/fonts/KyivTypeSerif-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KyivType Serif';
+  src: url('/fonts/KyivTypeSerif-Bold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KyivType Serif';
+  src: url('/fonts/KyivTypeSerif-Heavy.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Accents — Tiny5 (pixel)
+@font-face {
+  font-family: 'Tiny5';
+  src: url('/fonts/tiny5-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+// ─── Theme tokens ──────────────────────────────────────────────
+:root {
+  --fui-bg: #{$color-bg-light};
+  --fui-text: #{$color-text-light};
+  --fui-surface: #{$color-surface-light};
+  --fui-scroller: #{$color-scroller-light};
+  --fui-accent: #{$color-accent};
+  --fui-glow: #{$color-glow};
+  --fui-shadow-offset: 5px 5px 0 0 #000;
+}
+
+.dark {
+  --fui-bg: #{$color-bg-dark};
+  --fui-text: #{$color-text-dark};
+  --fui-surface: #{$color-surface-dark};
+  --fui-scroller: #{$color-scroller-dark};
+  --fui-shadow-offset: 5px 5px 0 0 #fff;
+}
+
+// ─── Base ──────────────────────────────────────────────────────
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family-sans;
+  line-height: 1.6;
+  background-color: var(--fui-bg);
+  color: var(--fui-text);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}

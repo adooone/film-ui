@@ -1,0 +1,46 @@
+// Canonical source of truth for all design tokens.
+// tailwind.ts derives its values from here — keep them in sync.
+
+// ─── Accent ────────────────────────────────────────────────────
+$color-accent: #2ba579;
+$color-accent-light: #34c08d;
+$color-accent-dark: #1e8460;
+$color-glow: #36ce91; // brighter accent used for the lava glow
+
+// ─── Dark theme ────────────────────────────────────────────────
+$color-bg-dark: #0e0e10;
+$color-text-dark: #ececec;
+$color-surface-dark: rgba(24, 24, 24, 0.88); // frosted panel
+$color-scroller-dark: #222224;
+
+// ─── Light theme ───────────────────────────────────────────────
+$color-bg-light: #fafafa;
+$color-text-light: #0e0e10;
+$color-surface-light: rgba(255, 255, 255, 0.32); // frosted panel
+$color-scroller-light: #eaeaea;
+
+// ─── Spacing ───────────────────────────────────────────────────
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.25rem;
+$space-6: 1.5rem;
+$space-8: 2rem;
+
+// ─── Type scale ────────────────────────────────────────────────
+$font-family-sans: 'Montserrat Alternates', sans-serif;
+$font-family-title: 'KyivType Serif', Georgia, serif;
+$font-family-mono: 'Tiny5', monospace;
+
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+$font-size-2xl: 1.5rem;
+
+// ─── Effects ───────────────────────────────────────────────────
+$blur-glass: 50px;
+$grain-duration: 8s;
+$glass-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+$radius-md: 0px; // the film aesthetic uses hard, square edges

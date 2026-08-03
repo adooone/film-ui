@@ -1,0 +1,6 @@
+@use '../../styles/mixins' as *;
+
+.glass {
+  @include glass;
+  position: relative;
+}

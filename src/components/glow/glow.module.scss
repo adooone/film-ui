@@ -1,0 +1,60 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.glow {
+  display: block;
+  width: auto;
+  height: 100%;
+  color: var(--fui-glow);
+}
+
+.blob {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: lava-float var(--lava-dur, 50s) ease-in-out infinite alternate;
+  animation-delay: var(--lava-delay, 0s);
+}
+
+.blob0 {
+  opacity: 0.67;
+  --lava-dur: 46s;
+}
+.blob1 {
+  opacity: 0.56;
+  --lava-dur: 62s;
+  --lava-delay: 4s;
+}
+.blob2 {
+  opacity: 0.12;
+  --lava-dur: 84s;
+  --lava-delay: 2s;
+}
+.blob3 {
+  opacity: 1;
+  --lava-dur: 40s;
+  --lava-delay: 6s;
+}
+.blob4 {
+  opacity: 1;
+  --lava-dur: 72s;
+  --lava-delay: 3s;
+}
+
+.botBlob {
+  opacity: 0.73;
+}
+
+@keyframes lava-float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(240px);
+  }
+}
+
+@include reduced-motion {
+  .blob {
+    animation: none;
+  }
+}
