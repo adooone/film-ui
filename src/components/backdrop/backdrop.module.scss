@@ -13,15 +13,18 @@
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  // Blur the gooey blobs into a soft ambient glow so they read as light
+  // bleeding through, not a hard green shape where they extend past a panel.
+  filter: blur(60px);
 }
 
 .glowLayer svg {
   position: absolute;
-  top: 0;
+  top: 50%;
   right: 0;
-  height: 100%;
-  transform: translateX(20%) scale(3);
-  transform-origin: center right;
+  height: 130%;
+  transform: translate(12%, -50%) scale(2);
+  transform-origin: center;
 }
 
 .grainLayer {
