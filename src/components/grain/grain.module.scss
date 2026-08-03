@@ -18,6 +18,7 @@
   background-image: url('../../assets/paper.jpg');
   opacity: var(--fui-grain-opacity, 0.4);
   animation: grain-shift $grain-duration steps(10) infinite;
+  // Natural 450×450 paper tile, like the CV (no background-size override).
 }
 
 // On a light background the CV uses a darker paper texture at lower opacity.
