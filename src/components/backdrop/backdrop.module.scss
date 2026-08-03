@@ -15,31 +15,21 @@
   pointer-events: none;
 }
 
-// Smooth ambient halo rising from the bottom-centre — a CSS gradient, so it
-// has no hard edges (unlike an SVG rect). Tall and bright enough to bleed
-// through a frosted panel sitting over it.
-.glowLayer::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(75% 80% at 50% 100%, rgba(54, 206, 145, 0.32), transparent 78%);
-}
-
+// Positioned exactly like the CV: the lamp scaled up and pulled left. The goo
+// filter + the soft radial halo (baked into the SVG) do all the smoothing.
 .glowLayer svg {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  // Taller than the viewport so the lamp overflows past the top and bottom
-  // edges — the blobs bleed off-screen instead of sitting in a gap.
-  height: 135%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: auto;
+  transform: translateX(-38vw) scale(4);
   transform-origin: center;
-  // A light blur keeps the lava soft while leaving the blobs readable.
-  filter: blur(8px);
 }
 
 .grainLayer {
   z-index: 1;
+  transform: scale(1.2);
 }
 
 .content {
