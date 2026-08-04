@@ -42,4 +42,7 @@ export type { InputProps } from './components/input';
 export { Textarea } from './components/textarea';
 export type { TextareaProps } from './components/textarea';
 
+export { Select } from './components/select';
+export type { SelectOption, SelectProps } from './components/select';
+
 export { cn } from './utils/style-helpers';
