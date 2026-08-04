@@ -34,7 +34,7 @@ export default defineConfig(({ command }) => {
     build: {
       lib: {
         entry: resolve(__dirname, 'src/index.ts'),
-        name: 'FilmUI',
+        name: 'FuncUI',
         fileName: (format) => `index.${format === 'es' ? 'mjs' : 'cjs'}`,
         formats: ['es', 'cjs'],
       },

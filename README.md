@@ -1,19 +1,19 @@
-# Film UI
+# Func UI
 
 A glossy, noisy, cosy React component library — **frosted glass**, **film grain**,
 and a **lava-lamp glow**. Extracted from the [df.adoo.one](https://df.adoo.one) CV site.
 
-> `@dendelion/film-ui` · React 18 · Tailwind-friendly · CSS-modules under the hood
+> `@dendelion/func-ui` · React 18 · Tailwind-friendly · CSS-modules under the hood
 
 ## Install
 
 ```bash
-pnpm add @dendelion/film-ui
+pnpm add @dendelion/func-ui
 ```
 
 ```tsx
-import { Backdrop, Glass } from '@dendelion/film-ui';
-import '@dendelion/film-ui/dist/index.css';
+import { Backdrop, Glass } from '@dendelion/func-ui';
+import '@dendelion/func-ui/dist/index.css';
 
 export default function App() {
   return (
@@ -42,8 +42,8 @@ More chunks (Card, Button, IconButton, ThemeToggle, Layout, Page, Nav) are on th
 
 ```ts
 // tailwind.config.ts
-import { filmPreset } from '@dendelion/film-ui/tailwind';
-export default { presets: [filmPreset], content: [/* ... */] };
+import { funcPreset } from '@dendelion/func-ui/tailwind';
+export default { presets: [funcPreset], content: [/* ... */] };
 ```
 
 ## Develop
