@@ -45,4 +45,10 @@ export type { TextareaProps } from './components/textarea';
 export { Select } from './components/select';
 export type { SelectOption, SelectProps } from './components/select';
 
+export { Checkbox } from './components/checkbox';
+export type { CheckboxProps } from './components/checkbox';
+
+export { Switch } from './components/switch';
+export type { SwitchProps } from './components/switch';
+
 export { cn } from './utils/style-helpers';
