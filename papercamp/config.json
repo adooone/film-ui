@@ -26,5 +26,6 @@
       "model": "sonnet",
       "effort": "low"
     }
-  }
+  },
+  "port": 3041
 }

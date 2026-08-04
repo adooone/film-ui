@@ -18,6 +18,9 @@ export type { ButtonProps } from './components/button';
 export { IconButton } from './components/icon-button';
 export type { IconButtonProps } from './components/icon-button';
 
+export { LinkButton } from './components/link-button';
+export type { LinkButtonProps } from './components/link-button';
+
 export { Stamp } from './components/stamp';
 export type { StampProps, StampVariant } from './components/stamp';
 

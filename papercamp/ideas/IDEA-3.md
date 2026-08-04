@@ -14,7 +14,7 @@ The bespoke-UI census found ~28 hand-rolled chrome-less buttons across 10 files,
 Skipped for the initial release (no demand from either target inventory): Accordion, Pagination, Avatar, PropTable, Swatch, Island, and the Layout/Page god-components (Backdrop+Glass composition replaces them). Radio/RadioGroup, Tabs, and the table story moved to the radio-parity tier ([[IDEA-7]]) now that the radio project is the target consumer.
 
 ### Phases
-- [ ] LinkButton (inherit/accent color, sizes — fixes the "fixed amber style" complaint)
+- [x] LinkButton (inherit/accent color, sizes — fixes the "fixed amber style" complaint)
 - [ ] EmptyState (loading / empty / error, centered per UX_PRINCIPLES layout-stability rules)
 - [ ] StatusDot + Chip (toggle/filter, aria-pressed) + SegmentedControl
 - [ ] Drawer (backdrop, focus trap, Escape, slide) — replaces two inconsistent hand-rolls
