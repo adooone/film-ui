@@ -2,7 +2,7 @@
 id: IDEA-1
 title: Tier 1 — the six workhorse components
 type: feat
-status: planned
+status: done
 created: 2026-08-04
 updated: 2026-08-04
 tags:
@@ -27,3 +27,4 @@ Design decisions baked in: semantic status tokens (`--fui-status-*` fill/text pa
 - 2026-08-04 — First five phases landed; types/lint/build green. Tooltip + Toast (the portal pieces) remain.
 - 2026-08-04 — Retargeted: func-ui now aims at the radio project ([[IDEA-6]]); paper-camp stays on paper-ui. Component set unchanged — the usage inventory still grounds the APIs.
 - 2026-08-04 — All phases complete. Tooltip (portal, clamped, Escape/scroll/resize dismiss, focus-immediate) and Toast (portal stack, 6 positions, status-token accent bars, role=alert for errors) landed with showcase entries; build green.
+- 2026-08-04 — Status → review. Work happened directly on main (pre-dates the branch-per-idea flow, see [[IDEA-8]]); review = walk the showcase entries, then promote to done and commit.
