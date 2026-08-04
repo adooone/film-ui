@@ -8,53 +8,78 @@
   color: var(--fui-glow);
 }
 
-.blob {
+// Per-blob timing/geometry vars are set inline by glow.tsx — the blobs are
+// procedurally generated there. The outer <g> runs the rise-hover-sink cycle;
+// the inner path wobbles at an unrelated period, so the compound motion never
+// visibly repeats.
+.blob,
+.wobble {
   transform-box: fill-box;
   transform-origin: center;
-  animation: lava-float var(--lava-dur, 50s) ease-in-out infinite alternate;
+}
+
+.blob {
+  animation: lava-cycle var(--lava-dur, 30s) infinite;
   animation-delay: var(--lava-delay, 0s);
 }
 
-.blob0 {
-  opacity: 0.67;
-  --lava-dur: 46s;
-}
-.blob1 {
-  opacity: 0.56;
-  --lava-dur: 62s;
-  --lava-delay: 4s;
-}
-.blob2 {
-  opacity: 0.12;
-  --lava-dur: 84s;
-  --lava-delay: 2s;
-}
-.blob3 {
-  opacity: 1;
-  --lava-dur: 40s;
-  --lava-delay: 6s;
-}
-.blob4 {
-  opacity: 1;
-  --lava-dur: 72s;
-  --lava-delay: 3s;
+.wobble {
+  animation: lava-wobble var(--lava-wdur, 9s) ease-in-out infinite;
+  animation-delay: var(--lava-wdelay, 0s);
 }
 
 .botBlob {
   opacity: 0.73;
 }
 
-@keyframes lava-float {
-  from {
-    transform: translateY(0);
+@keyframes lava-cycle {
+  0% {
+    // resting in the pool, heating up
+    transform: translateY(0) scale(1);
+    animation-timing-function: ease-in;
   }
-  to {
-    transform: translateY(240px);
+
+  14% {
+    // detaching — stretched tall while it accelerates upward
+    transform: translateY(calc(var(--lava-rise, 120px) * -0.25)) scale(0.9, 1.16);
+    animation-timing-function: ease-out;
+  }
+
+  44% {
+    // at the top — cooled, flattened
+    transform: translateY(calc(var(--lava-rise, 120px) * -1)) scale(1.08, 0.9);
+    animation-timing-function: ease-in-out;
+  }
+
+  60% {
+    // hovering before the sink
+    transform: translateY(calc(var(--lava-rise, 120px) * -0.88)) scale(0.97, 1.05);
+    animation-timing-function: ease-in-out;
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes lava-wobble {
+  0%,
+  100% {
+    transform: translateX(0) scale(1);
+  }
+
+  33% {
+    transform: translateX(var(--lava-sway, 4px)) scale(1.05, 0.95);
+  }
+
+  66% {
+    transform: translateX(calc(var(--lava-sway, 4px) * -1)) scale(0.95, 1.05);
   }
 }
 
 @include reduced-motion {
-  .blob {
+  .blob,
+  .wobble {
     animation: none;
   }
 }
