@@ -48,7 +48,9 @@
 .secondary {
   background-color: var(--fui-surface);
   color: var(--fui-text);
-  backdrop-filter: blur(12px);
+  // Frost only when standing on the raw page background — inside a Glass
+  // surface --fui-nested-backdrop resolves to `none`.
+  backdrop-filter: var(--fui-nested-backdrop, blur(12px));
 }
 
 .ghost {

@@ -11,10 +11,13 @@
 .grain::after {
   content: '';
   position: absolute;
-  top: -100%;
-  left: -50%;
-  width: 300%;
-  height: 300%;
+  // Smallest box grain-shift never exposes: its largest drift is ±15% x /
+  // ±25% y of this box, so 220% keeps ≥5% cover margin on every side while
+  // compositing at ~5 viewport-areas of GPU texture instead of 9 (was 300%).
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
   background-image: url('../../assets/paper.jpg');
   opacity: var(--fui-grain-opacity, 0.4);
   animation: grain-shift $grain-duration steps(10) infinite;
@@ -25,7 +28,7 @@
 // `.dark` must be :global — otherwise CSS modules hash it and this always
 // matches, wrongly using the light texture in dark mode too.
 :root:not(:global(.dark)) .grain::after {
-  background-image: url('../../assets/paper-light.png');
+  background-image: url('../../assets/paper-light.webp');
   opacity: var(--fui-grain-opacity, 0.2);
 }
 

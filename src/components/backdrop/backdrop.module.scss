@@ -23,7 +23,9 @@
   right: 0;
   height: 100%;
   width: auto;
-  transform: translateX(-38vw) scale(4);
+  // --fui-glow-x lets a consumer scroll-link the lamp's horizontal position;
+  // defaults to the CV offset.
+  transform: translateX(var(--fui-glow-x, -38vw)) scale(4);
   transform-origin: center;
 }
 

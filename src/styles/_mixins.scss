@@ -14,6 +14,12 @@
   backdrop-filter: blur(var(--fui-glass-blur, #{$blur}));
   -webkit-backdrop-filter: blur(var(--fui-glass-blur, #{$blur}));
   box-shadow: $glass-shadow;
+  // Follow the body's theme fade instead of snapping on toggle.
+  transition: background-color 0.3s ease;
+  // Descendants standing on this surface are already frosted — components
+  // that read this var (Card, secondary Button) drop their own backdrop
+  // blur, which would otherwise re-sample the panel on every scroll tick.
+  --fui-nested-backdrop: none;
 }
 
 // ─── Reduced motion ────────────────────────────────────────────
