@@ -1,12 +1,35 @@
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes, KeyboardEvent, MouseEventHandler } from 'react';
 import { cn } from '../../utils/style-helpers';
 import styles from './card.module.scss';
 
-export type CardProps = HTMLAttributes<HTMLDivElement>;
+export interface CardProps extends HTMLAttributes<HTMLDivElement> {
+  /** `sm` is the dense list-row size; `md` the roomy default. */
+  size?: 'sm' | 'md';
+  /**
+   * Makes the whole card clickable — adds role, tab stop, Enter/Space
+   * activation, and hover/press styling.
+   */
+  onClick?: MouseEventHandler<HTMLDivElement>;
+}
 
-function CardRoot({ className, children, ...props }: CardProps) {
+function activateOnEnterOrSpace(e: KeyboardEvent<HTMLDivElement>) {
+  if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) {
+    e.preventDefault();
+    e.currentTarget.click();
+  }
+}
+
+function CardRoot({ size = 'md', onClick, className, children, ...props }: CardProps) {
+  const interactive = onClick != null;
   return (
-    <div className={cn(styles.card, className)} {...props}>
+    <div
+      className={cn(styles.card, styles[size], interactive && styles.interactive, className)}
+      onClick={onClick}
+      {...(interactive
+        ? { role: 'button', tabIndex: 0, onKeyDown: activateOnEnterOrSpace }
+        : undefined)}
+      {...props}
+    >
       {children}
     </div>
   );

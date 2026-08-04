@@ -1,0 +1,18 @@
+---
+id: IDEA-6
+title: Adopt func-ui in the radio project (replace mojo-ui)
+type: feat
+status: idea
+created: 2026-08-04
+tags:
+  - migration
+  - radio
+---
+
+func-ui's target consumer is the radio monorepo (~/dev/radio): three apps (admin, player, wave) with 38 imports of the workspace package `@dendelion/mojo-ui`. mojo-ui already ships a `glassmorphism` style set — the frosted/grain/glow aesthetic is a natural upgrade, not a re-skin.
+
+mojo-ui's surface to cover: Button, IconButton, Card, Input, Select, Textarea, Checkbox, Switch, Radio, Slider, CircularProgress, Skeleton/SkeletonText, Panel, PageLayout, StatsGrid, Modal, Popup/PopupItem, Tooltip, DataTable, plus navigation components and shared style constants. Most map onto IDEA-1..3; the radio-specific remainder is scoped in [[IDEA-7]].
+
+Open decisions for migration time: whether func-ui ships PageLayout/StatsGrid equivalents or radio composes them from Backdrop/Glass/Card; whether mojo-ui's style-constant exports get func-ui counterparts or dissolve into Tailwind preset utilities.
+
+Blocked until IDEA-1..3 and IDEA-7 ship.

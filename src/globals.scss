@@ -78,6 +78,20 @@
   --fui-shadow-color: #000;
   --fui-shadow-offset: 5px 5px 0 0 #000;
   --fui-card-bg: rgba(255, 255, 255, 0.35);
+  --fui-danger: #c04f4f;
+
+  // Semantic status pairs (fill + text) — one source of truth for stamps,
+  // alerts, toasts, and consumer status maps.
+  --fui-status-neutral-fill: rgba(0, 0, 0, 0.08);
+  --fui-status-neutral-text: #55555a;
+  --fui-status-info-fill: rgba(74, 144, 217, 0.16);
+  --fui-status-info-text: #2f6cb0;
+  --fui-status-success-fill: rgba(43, 165, 121, 0.16);
+  --fui-status-success-text: #1e8460;
+  --fui-status-warning-fill: rgba(224, 158, 66, 0.18);
+  --fui-status-warning-text: #a66a1f;
+  --fui-status-error-fill: rgba(214, 86, 86, 0.16);
+  --fui-status-error-text: #b03a3a;
 }
 
 .dark {
@@ -88,6 +102,17 @@
   --fui-shadow-color: #fff;
   --fui-shadow-offset: 5px 5px 0 0 #fff;
   --fui-card-bg: rgba(38, 38, 38, 0.5);
+  --fui-danger: #c25b5b;
+  --fui-status-neutral-fill: rgba(255, 255, 255, 0.1);
+  --fui-status-neutral-text: #b9b9c0;
+  --fui-status-info-fill: rgba(96, 165, 235, 0.2);
+  --fui-status-info-text: #8ec2f2;
+  --fui-status-success-fill: rgba(54, 206, 145, 0.18);
+  --fui-status-success-text: #7de3b6;
+  --fui-status-warning-fill: rgba(235, 178, 92, 0.18);
+  --fui-status-warning-text: #ecc487;
+  --fui-status-error-fill: rgba(226, 106, 106, 0.18);
+  --fui-status-error-text: #eda1a1;
 }
 
 // ─── Base ──────────────────────────────────────────────────────

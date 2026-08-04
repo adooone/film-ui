@@ -1,0 +1,75 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--fui-text);
+  background-color: transparent;
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    background-color 200ms ease;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// ─── Variants ──────────────────────────────────────────────────
+.default {
+  background-color: var(--fui-surface);
+  backdrop-filter: var(--fui-nested-backdrop, blur(12px));
+  box-shadow: 3px 3px 0 0 var(--fui-shadow-color);
+
+  &:active:not(:disabled),
+  &.active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+  }
+}
+
+.ghost {
+  // Neutral hover wash that works over both themes
+  &:hover:not(:disabled) {
+    background-color: rgba(127, 127, 127, 0.18);
+  }
+
+  &:active:not(:disabled),
+  &.active:not(:disabled) {
+    background-color: rgba(127, 127, 127, 0.28);
+  }
+}
+
+.danger {
+  background-color: var(--fui-danger);
+  color: #fff;
+  box-shadow: 3px 3px 0 0 var(--fui-shadow-color);
+
+  &:active:not(:disabled),
+  &.active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+  }
+}
+
+// ─── Sizes ─────────────────────────────────────────────────────
+.sm {
+  width: 28px;
+  height: 28px;
+}
+
+.md {
+  width: 36px;
+  height: 36px;
+}

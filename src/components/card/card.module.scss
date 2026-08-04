@@ -1,19 +1,48 @@
 @use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
 
 .card {
   display: flex;
   flex-direction: column;
-  gap: $space-3;
-  padding: $space-6;
   background-color: var(--fui-card-bg);
   box-shadow: 3px 3px 0 0 var(--fui-shadow-color);
   // Follow the body's theme fade instead of snapping on toggle.
   transition:
     background-color 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 120ms ease,
+    transform 120ms ease;
   // Frost only when standing on the raw page background — inside a Glass
   // surface --fui-nested-backdrop resolves to `none`.
   backdrop-filter: var(--fui-nested-backdrop, blur(8px));
+}
+
+.interactive {
+  cursor: pointer;
+
+  &:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 0 var(--fui-shadow-color);
+  }
+
+  &:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 0 var(--fui-shadow-color);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// ─── Sizes ─────────────────────────────────────────────────────
+.sm {
+  gap: $space-2;
+  padding: $space-2 $space-3;
+}
+
+.md {
+  gap: $space-3;
+  padding: $space-6;
 }
 
 .title {
