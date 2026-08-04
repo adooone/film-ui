@@ -1,0 +1,89 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-2;
+  padding: $space-3;
+  background-color: var(--fui-status-neutral-fill);
+  color: var(--fui-text);
+  font-family: $font-family-sans;
+  font-size: $font-size-sm;
+  line-height: 1.4;
+  border-left: 4px solid var(--fui-status-neutral-text);
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  margin-top: 0.1em;
+}
+
+.message {
+  flex: 1;
+  min-width: 0;
+}
+
+.dismiss {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin: -0.25rem -0.25rem -0.25rem 0;
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 1.125rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.55;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.info {
+  background-color: var(--fui-status-info-fill);
+  border-left-color: var(--fui-status-info-text);
+
+  .icon {
+    color: var(--fui-status-info-text);
+  }
+}
+
+.success {
+  background-color: var(--fui-status-success-fill);
+  border-left-color: var(--fui-status-success-text);
+
+  .icon {
+    color: var(--fui-status-success-text);
+  }
+}
+
+.warning {
+  background-color: var(--fui-status-warning-fill);
+  border-left-color: var(--fui-status-warning-text);
+
+  .icon {
+    color: var(--fui-status-warning-text);
+  }
+}
+
+.error {
+  background-color: var(--fui-status-error-fill);
+  border-left-color: var(--fui-status-error-text);
+
+  .icon {
+    color: var(--fui-status-error-text);
+  }
+}

@@ -2,7 +2,7 @@
 id: IDEA-2
 title: Tier 2 — form controls and overlays
 type: feat
-status: planned
+status: review
 created: 2026-08-04
 tags:
   - components
@@ -14,10 +14,10 @@ The medium-usage band from the paper-camp inventory: Input (8 files), Modal (6),
 API conventions from observed usage: Input/Textarea keep DOM-event `onChange` (native-like); Select takes an `options` array and value-based `onChange` (matching how all 7 call sites use it). Modal ships compound parts — `Modal.Body`, `Modal.Footer`, `Modal.Error` — because the identical body/footer/error-line scaffolding is copy-pasted across all six paper-camp modals today.
 
 ### Phases
-- [ ] Input + Textarea (label, helperText, error, sm/md)
-- [ ] Select (options array, controlled value, keyboard nav, hidden native select for forms)
-- [ ] Checkbox + Switch
-- [ ] Modal (open/onClose/title/size, focus trap, scroll lock, Escape) with Body/Footer/Error compound parts
-- [ ] ListItem (active, icon, trailing action slot)
-- [ ] Alert (semantic variants, dismissible) + Divider (orientation, label)
-- [ ] Spinner + Progress + Skeleton
+- [x] Input + Textarea (label, helperText, error, sm/md)
+- [x] Select (options array, controlled value, keyboard nav, hidden native select for forms)
+- [x] Checkbox + Switch
+- [x] Modal (open/onClose/title/size, focus trap, scroll lock, Escape) with Body/Footer/Error compound parts
+- [x] ListItem (active, icon, trailing action slot)
+- [x] Alert (semantic variants, dismissible) + Divider (orientation, label)
+- [x] Spinner + Progress + Skeleton

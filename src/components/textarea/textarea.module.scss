@@ -1,0 +1,76 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.label {
+  font-family: $font-family-mono;
+  font-size: $font-size-sm;
+  font-weight: 700;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 6rem;
+  resize: vertical;
+  border: none;
+  background-color: var(--fui-surface);
+  color: var(--fui-text);
+  font-family: $font-family-sans;
+  line-height: 1.6;
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--fui-shadow-color);
+  backdrop-filter: var(--fui-nested-backdrop, blur(12px));
+  transition:
+    box-shadow 120ms ease,
+    background-color 200ms ease;
+
+  &::placeholder {
+    opacity: 0.5;
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 0 2px var(--fui-accent);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.invalid {
+  box-shadow: inset 0 0 0 2px var(--fui-status-error-text);
+
+  &:focus {
+    box-shadow: inset 0 0 0 2px var(--fui-status-error-text);
+  }
+}
+
+// ─── Sizes ─────────────────────────────────────────────────────
+.md {
+  padding: $space-2 $space-3;
+  font-size: $font-size-md;
+}
+
+.sm {
+  padding: $space-1 $space-3;
+  font-size: $font-size-sm;
+}
+
+.message {
+  margin: 0;
+  font-size: $font-size-sm;
+  opacity: 0.7;
+}
+
+.error {
+  opacity: 1;
+  color: var(--fui-status-error-text);
+}
