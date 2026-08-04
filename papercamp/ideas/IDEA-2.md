@@ -18,6 +18,6 @@ API conventions from observed usage: Input/Textarea keep DOM-event `onChange` (n
 - [x] Select (options array, controlled value, keyboard nav, hidden native select for forms)
 - [x] Checkbox + Switch
 - [x] Modal (open/onClose/title/size, focus trap, scroll lock, Escape) with Body/Footer/Error compound parts
-- [ ] ListItem (active, icon, trailing action slot)
+- [x] ListItem (active, icon, trailing action slot)
 - [ ] Alert (semantic variants, dismissible) + Divider (orientation, label)
 - [ ] Spinner + Progress + Skeleton

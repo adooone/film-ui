@@ -54,4 +54,7 @@ export type { SwitchProps } from './components/switch';
 export { Modal } from './components/modal';
 export type { ModalProps } from './components/modal';
 
+export { ListItem } from './components/list-item';
+export type { ListItemProps } from './components/list-item';
+
 export { cn } from './utils/style-helpers';
