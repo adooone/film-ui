@@ -4,7 +4,23 @@ import { type CSSProperties, type ReactNode, type Ref, useEffect, useRef, useSta
 import { createRoot } from 'react-dom/client';
 import { Backdrop, Button, Card, Glass, cn } from './index';
 
-const sections = ['foundations', 'components', 'tokens', 'docs'] as const;
+const sections = ['welcome', 'components', 'tokens', 'docs'] as const;
+
+// Long enough that one copy always exceeds the panel width; rendered twice
+// for the seamless -50% marquee loop.
+const marqueeText = 'frosted · noisy · cosy · funky · '.repeat(3);
+
+// Titles and title-refrains only — song titles aren't copyrightable,
+// full lyric verses are.
+const funkLines = [
+  { quote: 'We want the funk — give up the funk', src: 'parliament · 1975' },
+  { quote: 'One nation under a groove', src: 'funkadelic · 1978' },
+  { quote: 'Play that funky music', src: 'wild cherry · 1976' },
+  { quote: 'Get up offa that thing', src: 'james brown · 1976' },
+  { quote: "Le freak, c'est chic", src: 'chic · 1978' },
+  { quote: 'Dance to the music', src: 'sly & the family stone · 1968' },
+  { quote: 'Get down on it', src: 'kool & the gang · 1981' },
+];
 type Section = (typeof sections)[number];
 
 function Control<T extends string>({
@@ -100,8 +116,10 @@ function Swatch({ name, color }: { name: string; color: string }) {
 }
 
 function Showcase() {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
-  const [active, setActive] = useState<Section>('foundations');
+  const [theme, setTheme] = useState<'dark' | 'light'>(() =>
+    localStorage.getItem('fui-theme') === 'light' ? 'light' : 'dark',
+  );
+  const [active, setActive] = useState<Section>('welcome');
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -112,8 +130,12 @@ function Showcase() {
   const [size, setSize] = useState<'sm' | 'md'>('md');
   const [disabled, setDisabled] = useState(false);
 
+  // A different line every visit, like the lamp.
+  const [funkLine] = useState(() => funkLines[Math.floor(Math.random() * funkLines.length)]);
+
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
+    localStorage.setItem('fui-theme', theme);
   }, [theme]);
 
   // Scrub the ½ ⇄ ⅔ layout with scroll, then snap to the nearer state on
@@ -193,7 +215,9 @@ function Showcase() {
           {/* Left — title + section nav; shrinks as Components reaches the top */}
           <div ref={leftRef} className="flex shrink-0 flex-col p-12" style={{ width: '50%' }}>
             <div>
-              <p className="font-mono text-sm uppercase tracking-wide text-accent">film ui</p>
+              <p className="font-mono text-sm font-bold uppercase tracking-wide text-accent">
+                func ui
+              </p>
               <h1 className="mt-3 font-title text-5xl font-bold leading-tight">
                 Frosted.
                 <br />
@@ -210,7 +234,7 @@ function Showcase() {
                         type="button"
                         onClick={() => scrollTo(s)}
                         className={cn(
-                          'group flex items-center py-1 font-mono text-xl lowercase transition-colors',
+                          'group flex items-center py-1 font-mono text-lg lowercase transition-colors',
                           active === s ? 'text-primary' : 'hover:text-primary',
                         )}
                       >
@@ -232,11 +256,11 @@ function Showcase() {
 
             <div className="mt-auto flex flex-col gap-3">
               {/* Fixed measure — the width scrub must not rewrap this every frame */}
-              <p className="max-w-xs opacity-80">A glossy, noisy, cosy React component library.</p>
+              <p className="max-w-xs opacity-80">A funky little UI library for React.</p>
               <button
                 type="button"
                 onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
-                className="self-start font-mono text-sm lowercase text-accent"
+                className="self-start font-mono text-sm font-bold lowercase text-accent"
               >
                 theme: {theme}
               </button>
@@ -246,35 +270,47 @@ function Showcase() {
           {/* Right — frost lives on Glass; scrolling happens in a plain child
               so the blur surface never repaints on scroll */}
           <Glass className="flex-1">
-            <div ref={scrollRef} className="flex h-full flex-col gap-16 overflow-y-auto p-12">
-              <SectionBlock
-                id="foundations"
-                title="Foundations"
-                lead="The non-component building blocks — the primitives and design language everything else is built on. You don't drop these in like a Button; they set the atmosphere. Film UI's look comes from four layered primitives (the Tokens section covers the other half: colour and type)."
-              >
-                <Entry
-                  name="Backdrop"
-                  description="The full-bleed shell that composes Glow and Grain over the base colour — it's the entire page background you're looking at right now."
-                />
-                <Entry
-                  name="Grain"
-                  description="A drifting film-noise texture layered over the background for a grainy, analog feel. Its opacity is theme-aware (heavier in dark, lighter in light)."
-                />
-                <Entry
-                  name="Glow"
-                  description="The lava-lamp ambient — gooey blobs behind a soft radial halo, tinted by the --fui-glow token so it retints with the theme."
-                />
-                <Entry
-                  name="Glass"
-                  description="The frosted, translucent surface this panel itself is built from — a heavy backdrop blur over a semi-transparent fill."
+            <div
+              ref={scrollRef}
+              className="flex h-full flex-col gap-16 overflow-x-hidden overflow-y-auto p-12"
+            >
+              {/* Welcome fills the panel's first viewport, so Components sits
+                  right at the fold and the width scrub starts on first scroll.
+                  Composition flows diagonally: text top-left (mirroring the
+                  page title), start-here card middle-right, marquee bottom. */}
+              <section id="welcome" className="flex min-h-full scroll-mt-10 flex-col">
+                {/* Top-right — a funk line, set like the library tagline in
+                    the opposite corner */}
+                <div className="self-end text-right">
+                  <p className="ml-auto max-w-sm opacity-80">{funkLine.quote}</p>
+                  <p className="mt-2 font-mono text-sm font-bold lowercase text-accent">
+                    {funkLine.src}
+                  </p>
+                </div>
+
+                {/* Ghost marquee — drifts through the empty centre of the
+                    view; the edges dissolve via mask instead of a hard clip.
+                    The track is absolutely positioned so its huge nowrap
+                    width can't inflate the flex line; content duplicated
+                    twice for a seamless loop */}
+                <div
+                  className="pointer-events-none relative my-auto h-32 select-none overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]"
+                  aria-hidden
                 >
-                  {/* blur={0}: the panel behind is already frosted, so an own
-                      backdrop-filter adds nothing visually — only raster cost */}
-                  <Glass blur={0} className="max-w-xs p-6">
-                    <p className="font-mono text-sm lowercase">frosted glass</p>
-                  </Glass>
-                </Entry>
-              </SectionBlock>
+                  <div className="absolute left-0 top-0 animate-[marquee_55s_linear_infinite] whitespace-nowrap font-sans text-9xl font-bold uppercase leading-none opacity-[0.05] motion-reduce:animate-none">
+                    <span>{marqueeText}</span>
+                    <span>{marqueeText}</span>
+                  </div>
+                </div>
+
+                {/* Bottom-right corner — point-symmetric to "Frosted." top-left */}
+                <div className="self-end text-right">
+                  <h2 className="font-title text-5xl font-bold leading-tight">Welcome!</h2>
+                  <Button className="mt-6" onClick={() => scrollTo('components')}>
+                    Explore components
+                  </Button>
+                </div>
+              </section>
 
               <SectionBlock
                 id="components"
@@ -335,11 +371,11 @@ function Showcase() {
                     <Swatch name="glow" color="#36CE91" />
                   </div>
                 </Entry>
-                <Entry name="Typography" description="Serif titles, geometric body, pixel accents.">
+                <Entry name="Typography" description="Serif titles, geometric body and accents.">
                   <div className="flex flex-col gap-2">
                     <p className="font-title text-2xl">KyivType Serif — titles</p>
                     <p className="text-lg">Montserrat Alternates — body</p>
-                    <p className="font-mono text-lg lowercase">tiny5 — accents</p>
+                    <p className="font-mono text-lg lowercase">montserrat alternates — accents</p>
                   </div>
                 </Entry>
               </SectionBlock>
@@ -347,11 +383,34 @@ function Showcase() {
               <SectionBlock id="docs" title="Docs" lead="Getting started with the package.">
                 <Entry name="Install" description="Add the package and import the stylesheet once.">
                   <pre className="overflow-x-auto bg-black/20 p-4 font-[ui-monospace,monospace] text-sm dark:bg-black/40">
-                    {`pnpm add @dendelion/film-ui
+                    {`pnpm add @dendelion/func-ui
 
-import { Backdrop, Glass, Button } from '@dendelion/film-ui';
-import '@dendelion/film-ui/dist/index.css';`}
+import { Backdrop, Glass, Button } from '@dendelion/func-ui';
+import '@dendelion/func-ui/dist/index.css';`}
                   </pre>
+                </Entry>
+                <Entry
+                  name="Foundations"
+                  description="The atmosphere is four layered primitives, composed once as the page shell — everything else sits on top of them."
+                >
+                  <ul className="m-0 flex max-w-md list-none flex-col gap-2 p-0">
+                    <li>
+                      <span className="font-mono text-sm text-accent">backdrop</span> — the
+                      full-bleed shell composing the layers below over the base colour
+                    </li>
+                    <li>
+                      <span className="font-mono text-sm text-accent">grain</span> — a drifting
+                      film-noise texture with theme-aware opacity
+                    </li>
+                    <li>
+                      <span className="font-mono text-sm text-accent">glow</span> — the lava-lamp
+                      ambient behind a soft halo, tinted by the --fui-glow token
+                    </li>
+                    <li>
+                      <span className="font-mono text-sm text-accent">glass</span> — a heavy
+                      backdrop blur over a translucent fill; the panel you're reading
+                    </li>
+                  </ul>
                 </Entry>
               </SectionBlock>
             </div>

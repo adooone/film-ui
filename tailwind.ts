@@ -1,7 +1,7 @@
 // Color values here must stay in sync with src/styles/_tokens.scss — that file
 // is the canonical source.
 /** @type {import('tailwindcss').Config} */
-export const filmPreset = {
+export const funcPreset = {
   darkMode: 'class',
   theme: {
     extend: {
@@ -9,7 +9,7 @@ export const filmPreset = {
         sans: ['"Montserrat Alternates"', 'ui-sans-serif', 'sans-serif'],
         title: ['"KyivType Serif"', 'Georgia', 'serif'],
         serif: ['"KyivType Serif"', 'Georgia', 'serif'],
-        mono: ['Tiny5', 'ui-monospace', 'monospace'],
+        mono: ['"Montserrat Alternates"', 'ui-sans-serif', 'sans-serif'],
       },
       colors: {
         // Signature accent — a dark green-teal.
@@ -50,12 +50,17 @@ export const filmPreset = {
           from: { transform: 'translateY(0)' },
           to: { transform: 'translateY(240px)' },
         },
+        // Seamless loop for content duplicated exactly twice
+        marquee: {
+          to: { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         grain: 'grain 8s steps(10) infinite',
+        marquee: 'marquee 40s linear infinite',
       },
     },
   },
 };
 
-export default filmPreset;
+export default funcPreset;

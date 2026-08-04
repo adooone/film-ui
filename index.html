@@ -3,7 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Film UI — Showcase</title>
+    <title>Func UI — Showcase</title>
+    <!-- Apply the saved theme before first paint so the page never flashes
+         the wrong background (dark is the default) -->
+    <script>
+      try {
+        document.documentElement.classList.toggle(
+          'dark',
+          localStorage.getItem('fui-theme') !== 'light',
+        );
+      } catch {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
