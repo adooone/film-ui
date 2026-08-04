@@ -36,4 +36,10 @@ export type {
 export { Card } from './components/card';
 export type { CardProps } from './components/card';
 
+export { Input } from './components/input';
+export type { InputProps } from './components/input';
+
+export { Textarea } from './components/textarea';
+export type { TextareaProps } from './components/textarea';
+
 export { cn } from './utils/style-helpers';
