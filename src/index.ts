@@ -63,4 +63,13 @@ export type { AlertProps, AlertVariant } from './components/alert';
 export { Divider } from './components/divider';
 export type { DividerProps } from './components/divider';
 
+export { Spinner } from './components/spinner';
+export type { SpinnerProps } from './components/spinner';
+
+export { Progress } from './components/progress';
+export type { ProgressProps } from './components/progress';
+
+export { Skeleton } from './components/skeleton';
+export type { SkeletonProps } from './components/skeleton';
+
 export { cn } from './utils/style-helpers';

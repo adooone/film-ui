@@ -1,0 +1,30 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.progress {
+  appearance: none;
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: color-mix(in srgb, var(--fui-text) 12%, transparent);
+  color: var(--fui-progress-fill, var(--fui-accent));
+
+  &::-webkit-progress-bar {
+    background-color: transparent;
+  }
+
+  &::-webkit-progress-value {
+    background-color: var(--fui-progress-fill, var(--fui-accent));
+    transition: width 240ms ease;
+  }
+
+  &::-moz-progress-bar {
+    background-color: var(--fui-progress-fill, var(--fui-accent));
+  }
+
+  @include reduced-motion {
+    &::-webkit-progress-value {
+      transition: none;
+    }
+  }
+}

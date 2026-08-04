@@ -2,7 +2,7 @@
 id: IDEA-2
 title: Tier 2 — form controls and overlays
 type: feat
-status: planned
+status: review
 created: 2026-08-04
 tags:
   - components
@@ -20,4 +20,4 @@ API conventions from observed usage: Input/Textarea keep DOM-event `onChange` (n
 - [x] Modal (open/onClose/title/size, focus trap, scroll lock, Escape) with Body/Footer/Error compound parts
 - [x] ListItem (active, icon, trailing action slot)
 - [x] Alert (semantic variants, dismissible) + Divider (orientation, label)
-- [ ] Spinner + Progress + Skeleton
+- [x] Spinner + Progress + Skeleton
