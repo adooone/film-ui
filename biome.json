@@ -43,7 +43,7 @@
   },
   "overrides": [
     {
-      "include": ["src/components/select/**"],
+      "include": ["src/components/select/**", "src/components/modal/**"],
       "linter": {
         "rules": {
           "a11y": {

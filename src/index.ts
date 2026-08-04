@@ -51,4 +51,7 @@ export type { CheckboxProps } from './components/checkbox';
 export { Switch } from './components/switch';
 export type { SwitchProps } from './components/switch';
 
+export { Modal } from './components/modal';
+export type { ModalProps } from './components/modal';
+
 export { cn } from './utils/style-helpers';
