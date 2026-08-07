@@ -75,4 +75,7 @@ export type { ProgressProps } from './components/progress';
 export { Skeleton } from './components/skeleton';
 export type { SkeletonProps } from './components/skeleton';
 
+export { EmptyState } from './components/empty-state';
+export type { EmptyStateProps, EmptyStateStatus } from './components/empty-state';
+
 export { cn } from './utils/style-helpers';
