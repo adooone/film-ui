@@ -19,7 +19,7 @@ Skipped for the initial release (no demand from either target inventory): Accord
 - [x] LinkButton (inherit/accent color, sizes — fixes the "fixed amber style" complaint)
 - [x] EmptyState (loading / empty / error, centered per UX_PRINCIPLES layout-stability rules)
 - [x] StatusDot + Chip (toggle/filter, aria-pressed) + SegmentedControl
-- [ ] Drawer (backdrop, focus trap, Escape, slide) — replaces two inconsistent hand-rolls
+- [x] Drawer (backdrop, focus trap, Escape, slide) — replaces two inconsistent hand-rolls
 - [ ] Kbd + InlineCode + CodeBlock (filename, copy, per-line diff add/remove styling)
 - [ ] CopyButton + Breadcrumb + Menu + FileButton
 - [ ] Icon set (~20: close, check, copy, plus, folder, lightbulb, chevrons, play, flag, sort arrows, refresh, more, wand, merge, push, pull, shuffle, commit, github, note)
