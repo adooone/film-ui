@@ -78,4 +78,16 @@ export type { SkeletonProps } from './components/skeleton';
 export { EmptyState } from './components/empty-state';
 export type { EmptyStateProps, EmptyStateStatus } from './components/empty-state';
 
+export { StatusDot } from './components/status-dot';
+export type { StatusDotProps, StatusDotVariant } from './components/status-dot';
+
+export { Chip } from './components/chip';
+export type { ChipProps } from './components/chip';
+
+export { SegmentedControl } from './components/segmented-control';
+export type {
+  SegmentedControlOption,
+  SegmentedControlProps,
+} from './components/segmented-control';
+
 export { cn } from './utils/style-helpers';
