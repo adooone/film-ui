@@ -93,4 +93,13 @@ export type {
   SegmentedControlProps,
 } from './components/segmented-control';
 
+export { Kbd } from './components/kbd';
+export type { KbdProps } from './components/kbd';
+
+export { InlineCode } from './components/inline-code';
+export type { InlineCodeProps } from './components/inline-code';
+
+export { CodeBlock } from './components/code-block';
+export type { CodeBlockProps, CodeDiff, CodeLine } from './components/code-block';
+
 export { cn } from './utils/style-helpers';
