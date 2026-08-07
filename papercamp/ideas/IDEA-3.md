@@ -24,6 +24,8 @@ Skipped for the initial release (no demand from either target inventory): Accord
 - [x] CopyButton + Breadcrumb + Menu + FileButton
 - [x] Icon set (~20: close, check, copy, plus, folder, lightbulb, chevrons, play, flag, sort arrows, refresh, more, wand, merge, push, pull, shuffle, commit, github, note)
 - [x] (Table/Tabs/Radio moved to [[IDEA-7]] with the radio retarget)
+- [ ] Investigate red Tests/Docs status stamps on deliver card
+      Determine why the deliver card marks Tests and Docs as red — check what conditions those stamps key off (test script/framework presence, docs coverage) and fix or clear the false-negative.
 
 ### Fixes
 - [ ] Fix failing tests
@@ -36,3 +38,6 @@ Skipped for the initial release (no demand from either target inventory): Accord
 - [x] 2026-08-07 [chat] [agent] Just checking, got it — nothing to change here.
 - [x] 2026-08-07 [chat] fix tests
 - [x] 2026-08-07 [chat] [agent] Added that as a fix here — a new phase to fix the tests. (reopened this idea to re-run)
+- [ ] 2026-08-07 [question] [agent] Run-all parked on fix 1 ("Fix failing tests") — the agent needs a decision: This repo has no test suite (no test script, framework, or files — and all runnable checks are green); do you want me to (a) close this fix as "no failing tests — repo is green," or (b) scaffold a new test framework + suite from scratch (which is new work beyond "fix failing tests" and needs a framework/scope decision)?
+- [x] 2026-08-07 [chat] then check why the status stamp for Tests and Docs in the deliver card is red
+- [x] 2026-08-07 [chat] [agent] Added that as a fix here — checking why the Tests and Docs status stamps show red on the deliver card.
