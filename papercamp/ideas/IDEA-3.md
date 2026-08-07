@@ -2,7 +2,7 @@
 id: IDEA-3
 title: Tier 3 — gap-fillers paper-ui never had
 type: feat
-status: review
+status: in-progress
 created: 2026-08-04
 updated: 2026-08-07
 tags:
@@ -25,8 +25,14 @@ Skipped for the initial release (no demand from either target inventory): Accord
 - [x] Icon set (~20: close, check, copy, plus, folder, lightbulb, chevrons, play, flag, sort arrows, refresh, more, wand, merge, push, pull, shuffle, commit, github, note)
 - [x] (Table/Tabs/Radio moved to [[IDEA-7]] with the radio retarget)
 
+### Fixes
+- [ ] Fix failing tests
+      Investigate and fix the currently failing test suite.
+
 ### Thread
 - [x] 2026-08-07 [chat] Quick test from the embedded toolbar — just reply with a short hello.
 - [x] 2026-08-07 [chat] [agent] Hello — Paper Scout here, reading you loud and clear.
 - [x] 2026-08-07 [chat] just checking
 - [x] 2026-08-07 [chat] [agent] Just checking, got it — nothing to change here.
+- [x] 2026-08-07 [chat] fix tests
+- [x] 2026-08-07 [chat] [agent] Added that as a fix here — a new phase to fix the tests. (reopened this idea to re-run)
