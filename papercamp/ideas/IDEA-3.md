@@ -2,7 +2,7 @@
 id: IDEA-3
 title: Tier 3 — gap-fillers paper-ui never had
 type: feat
-status: planned
+status: review
 created: 2026-08-04
 updated: 2026-08-07
 tags:
@@ -23,7 +23,7 @@ Skipped for the initial release (no demand from either target inventory): Accord
 - [x] Kbd + InlineCode + CodeBlock (filename, copy, per-line diff add/remove styling)
 - [x] CopyButton + Breadcrumb + Menu + FileButton
 - [x] Icon set (~20: close, check, copy, plus, folder, lightbulb, chevrons, play, flag, sort arrows, refresh, more, wand, merge, push, pull, shuffle, commit, github, note)
-- [ ] (Table/Tabs/Radio moved to [[IDEA-7]] with the radio retarget)
+- [x] (Table/Tabs/Radio moved to [[IDEA-7]] with the radio retarget)
 
 ### Thread
 - [x] 2026-08-07 [chat] Quick test from the embedded toolbar — just reply with a short hello.
