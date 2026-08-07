@@ -9,7 +9,7 @@
     "phase": {
       "agent": "claude-code",
       "model": "opus",
-      "effort": "high"
+      "effort": "medium"
     },
     "planDraft": {
       "agent": "claude-code",
@@ -25,6 +25,11 @@
       "agent": "claude-code",
       "model": "sonnet",
       "effort": "low"
+    },
+    "feedback": {
+      "agent": "claude-code",
+      "model": "sonnet",
+      "effort": "medium"
     }
   },
   "port": 3041

@@ -114,4 +114,7 @@ export type { MenuItem, MenuProps } from './components/menu';
 export { FileButton } from './components/file-button';
 export type { FileButtonProps } from './components/file-button';
 
+export { Icon } from './components/icon';
+export type { IconName, IconProps } from './components/icon';
+
 export { cn } from './utils/style-helpers';
