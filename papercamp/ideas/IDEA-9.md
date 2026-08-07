@@ -2,8 +2,9 @@
 id: IDEA-9
 title: Glass frost flickers on scroll — move the filter off the scroller's ancestry
 type: fix
-status: review
+status: done
 created: 2026-08-05
+updated: 2026-08-07
 tags:
   - components
   - rendering

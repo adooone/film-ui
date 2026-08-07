@@ -10,4 +10,4 @@
 | IDEA-6 | Adopt func-ui in the radio project (replace mojo-ui) | feat | idea | migration, radio |
 | IDEA-7 | Radio-parity components — Slider, CircularProgress, Radio, DataTable, Tabs, Menu | feat | planned | components, release, radio |
 | IDEA-8 | Adopt branch-per-idea working flow | chore | idea | workflow |
-| IDEA-9 | Glass frost flickers on scroll — move the filter off the scroller's ancestry | fix | review | components, rendering |
+| IDEA-9 | Glass frost flickers on scroll — move the filter off the scroller's ancestry | fix | done | components, rendering |

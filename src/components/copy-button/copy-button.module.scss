@@ -1,0 +1,44 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.copyButton {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  border: none;
+  padding: 0.15em 0.4em;
+  background: none;
+  color: var(--fui-accent);
+  font-family: $font-family-sans;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  opacity: 0.85;
+  transition:
+    opacity 120ms ease,
+    color 200ms ease;
+
+  &:hover:not(:disabled) {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.copied {
+  color: var(--fui-status-success-text);
+  opacity: 1;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+}

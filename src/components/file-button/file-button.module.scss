@@ -1,0 +1,57 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.fileButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-2 $space-6;
+  background-color: var(--fui-surface);
+  color: var(--fui-text);
+  font-family: $font-family-sans;
+  font-weight: 700;
+  font-size: $font-size-md;
+  line-height: 1.2;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 5px 5px 0 0 var(--fui-shadow-color);
+  backdrop-filter: var(--fui-nested-backdrop, blur(12px));
+  transition:
+    filter 200ms ease,
+    background-color 200ms ease;
+
+  &:hover {
+    filter: brightness(1.05);
+  }
+
+  &:focus-within {
+    @include focus-ring;
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+
+  &:hover {
+    filter: none;
+  }
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+}

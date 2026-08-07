@@ -102,4 +102,16 @@ export type { InlineCodeProps } from './components/inline-code';
 export { CodeBlock } from './components/code-block';
 export type { CodeBlockProps, CodeDiff, CodeLine } from './components/code-block';
 
+export { CopyButton } from './components/copy-button';
+export type { CopyButtonProps } from './components/copy-button';
+
+export { Breadcrumb } from './components/breadcrumb';
+export type { BreadcrumbItem, BreadcrumbProps } from './components/breadcrumb';
+
+export { Menu } from './components/menu';
+export type { MenuItem, MenuProps } from './components/menu';
+
+export { FileButton } from './components/file-button';
+export type { FileButtonProps } from './components/file-button';
+
 export { cn } from './utils/style-helpers';

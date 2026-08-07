@@ -21,7 +21,7 @@ Skipped for the initial release (no demand from either target inventory): Accord
 - [x] StatusDot + Chip (toggle/filter, aria-pressed) + SegmentedControl
 - [x] Drawer (backdrop, focus trap, Escape, slide) — replaces two inconsistent hand-rolls
 - [x] Kbd + InlineCode + CodeBlock (filename, copy, per-line diff add/remove styling)
-- [ ] CopyButton + Breadcrumb + Menu + FileButton
+- [x] CopyButton + Breadcrumb + Menu + FileButton
 - [ ] Icon set (~20: close, check, copy, plus, folder, lightbulb, chevrons, play, flag, sort arrows, refresh, more, wand, merge, push, pull, shuffle, commit, github, note)
 - [ ] (Table/Tabs/Radio moved to [[IDEA-7]] with the radio retarget)
 
