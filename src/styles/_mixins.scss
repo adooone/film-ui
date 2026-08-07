@@ -9,17 +9,33 @@
 // ─── Frosted glass ─────────────────────────────────────────────
 // The core "glossy transparent" surface: translucent fill behind a
 // heavy backdrop blur. Blur radius is var-backed so consumers can tune it.
+//
+// The frost lives on a ::before layer, NOT on the host: when the host is an
+// ancestor of a scrolling element, inner scrolls invalidate the filter's
+// render surface and Chromium transiently drops the blur (visible flicker,
+// reproduced on macOS). As a sibling layer behind the content, the frost is
+// untouched by scrolling. The host gets z-index: 0 so the -1 pseudo stays
+// inside it without creating a backdrop root (isolation would break sampling).
 @mixin glass($blur: $blur-glass) {
-  background-color: var(--fui-surface);
-  backdrop-filter: blur(var(--fui-glass-blur, #{$blur}));
-  -webkit-backdrop-filter: blur(var(--fui-glass-blur, #{$blur}));
+  position: relative;
+  z-index: 0;
   box-shadow: $glass-shadow;
-  // Follow the body's theme fade instead of snapping on toggle.
-  transition: background-color 0.3s ease;
   // Descendants standing on this surface are already frosted — components
   // that read this var (Card, secondary Button) drop their own backdrop
   // blur, which would otherwise re-sample the panel on every scroll tick.
   --fui-nested-backdrop: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--fui-surface);
+    backdrop-filter: var(--fui-glass-backdrop, blur(var(--fui-glass-blur, #{$blur})));
+    -webkit-backdrop-filter: var(--fui-glass-backdrop, blur(var(--fui-glass-blur, #{$blur})));
+    // Follow the body's theme fade instead of snapping on toggle.
+    transition: background-color 0.3s ease;
+  }
 }
 
 // ─── Reduced motion ────────────────────────────────────────────

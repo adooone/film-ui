@@ -4,9 +4,11 @@ title: Tier 3 — gap-fillers paper-ui never had
 type: feat
 status: planned
 created: 2026-08-04
+updated: 2026-08-07
 tags:
   - components
   - release
+order: 1
 ---
 
 The bespoke-UI census found ~28 hand-rolled chrome-less buttons across 10 files, ~20 loading/empty/error text states, 13 app-local icons plus text-glyph fallbacks with comments naming the missing icon, two inconsistent drawers, and duplicated diff/code/chip/dot patterns. These components make func-ui a genuine upgrade rather than a re-skin.
@@ -22,3 +24,9 @@ Skipped for the initial release (no demand from either target inventory): Accord
 - [ ] CopyButton + Breadcrumb + Menu + FileButton
 - [ ] Icon set (~20: close, check, copy, plus, folder, lightbulb, chevrons, play, flag, sort arrows, refresh, more, wand, merge, push, pull, shuffle, commit, github, note)
 - [ ] (Table/Tabs/Radio moved to [[IDEA-7]] with the radio retarget)
+
+### Thread
+- [x] 2026-08-07 [chat] Quick test from the embedded toolbar — just reply with a short hello.
+- [x] 2026-08-07 [chat] [agent] Hello — Paper Scout here, reading you loud and clear.
+- [x] 2026-08-07 [chat] just checking
+- [x] 2026-08-07 [chat] [agent] Just checking, got it — nothing to change here.

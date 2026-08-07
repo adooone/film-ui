@@ -1,4 +1,5 @@
 import { resolve } from 'node:path';
+import { paperCamp } from '@dendelion/paper-camp/vite';
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
@@ -13,6 +14,7 @@ export default defineConfig(({ command }) => {
   if (command === 'serve') {
     return {
       ...baseConfig,
+      plugins: [...baseConfig.plugins, paperCamp()],
       server: {
         host: '0.0.0.0',
         port: 3040,
