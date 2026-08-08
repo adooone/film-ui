@@ -13,7 +13,7 @@ Every component shipped in IDEA-1..3 needs an entry in the showcase's Components
 
 ### Phases
 - [x] Tier 1 entries: IconButton, Stamp, Tooltip, Toast (+ extend Button entry with danger/icons/isActive)
-- [ ] Tier 2 entries: form controls, Modal, feedback components
+- [x] Tier 2 entries: form controls, Modal, feedback components
 - [ ] Tier 3 entries: gap-fillers + icon-set grid
 
 ### Log
