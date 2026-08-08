@@ -1,20 +1,31 @@
 import { resolve } from 'node:path';
-import { paperCamp } from '@dendelion/paper-camp/vite';
 import react from '@vitejs/plugin-react-swc';
-import { defineConfig } from 'vite';
+import { defineConfig, type PluginOption } from 'vite';
 import dts from 'vite-plugin-dts';
 import { sharedCssConfig } from './vite.shared';
 
-export default defineConfig(({ command }) => {
+// Dev-only tooling: the paper-camp toolbar package may be absent (e.g. on CI,
+// where the local link: spec doesn't resolve), so the dev server degrades to
+// no toolbar instead of the whole config failing to load. Builds never import it.
+async function paperCampPlugin(): Promise<PluginOption[]> {
+  try {
+    const { paperCamp } = await import('@dendelion/paper-camp/vite');
+    return [paperCamp()];
+  } catch {
+    return [];
+  }
+}
+
+export default defineConfig(async ({ command }) => {
   const baseConfig = {
-    plugins: [react()],
+    plugins: [react()] as PluginOption[],
     css: sharedCssConfig,
   };
 
   if (command === 'serve') {
     return {
       ...baseConfig,
-      plugins: [...baseConfig.plugins, paperCamp()],
+      plugins: [...baseConfig.plugins, ...(await paperCampPlugin())],
       server: {
         host: '0.0.0.0',
         port: 3040,
