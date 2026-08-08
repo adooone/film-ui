@@ -5,20 +5,34 @@ import { createRoot } from 'react-dom/client';
 import {
   Alert,
   Backdrop,
+  Breadcrumb,
   Button,
   Card,
   Checkbox,
+  Chip,
+  CodeBlock,
+  CopyButton,
   Divider,
+  Drawer,
+  EmptyState,
+  FileButton,
   Glass,
+  Icon,
   IconButton,
+  InlineCode,
   Input,
+  Kbd,
+  LinkButton,
   ListItem,
+  Menu,
   Modal,
   Progress,
+  SegmentedControl,
   Select,
   Skeleton,
   Spinner,
   Stamp,
+  StatusDot,
   Switch,
   Textarea,
   ToastProvider,
@@ -26,7 +40,16 @@ import {
   cn,
   useToast,
 } from './index';
-import type { AlertVariant, SelectOption, StampVariant, TooltipPlacement } from './index';
+import type {
+  AlertVariant,
+  DrawerSide,
+  EmptyStateStatus,
+  IconName,
+  SelectOption,
+  StampVariant,
+  StatusDotVariant,
+  TooltipPlacement,
+} from './index';
 
 const sections = ['welcome', 'components', 'tokens', 'docs'] as const;
 
@@ -45,6 +68,33 @@ const funkLines = [
   { quote: 'Dance to the music', src: 'sly & the family stone · 1968' },
   { quote: 'Get down on it', src: 'kool & the gang · 1981' },
 ];
+const iconNames: IconName[] = [
+  'close',
+  'check',
+  'copy',
+  'plus',
+  'folder',
+  'lightbulb',
+  'chevron-up',
+  'chevron-down',
+  'chevron-left',
+  'chevron-right',
+  'play',
+  'flag',
+  'sort-asc',
+  'sort-desc',
+  'refresh',
+  'more',
+  'wand',
+  'merge',
+  'push',
+  'pull',
+  'shuffle',
+  'commit',
+  'github',
+  'note',
+];
+
 const selectOptions: SelectOption[] = [
   { value: 'funk', label: 'Funk' },
   { value: 'soul', label: 'Soul' },
@@ -243,6 +293,23 @@ function Showcase() {
   const [spinnerSize, setSpinnerSize] = useState<'sm' | 'md' | 'lg'>('md');
   const [progressValue, setProgressValue] = useState(60);
   const [skeletonVariant, setSkeletonVariant] = useState<'text' | 'rect' | 'circle'>('text');
+
+  const [linkColor, setLinkColor] = useState<'inherit' | 'accent'>('accent');
+  const [linkSize, setLinkSize] = useState<'sm' | 'md' | 'lg'>('md');
+
+  const [emptyStatus, setEmptyStatus] = useState<EmptyStateStatus>('empty');
+
+  const [dotVariant, setDotVariant] = useState<StatusDotVariant>('success');
+  const [dotPulse, setDotPulse] = useState(false);
+
+  const [chipFilters, setChipFilters] = useState<string[]>(['funk']);
+
+  const [segValue, setSegValue] = useState('list');
+
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerSide, setDrawerSide] = useState<DrawerSide>('right');
+
+  const [fileName, setFileName] = useState<string | null>(null);
 
   // A different line every visit, like the lamp.
   const [funkLine] = useState(() => funkLines[Math.floor(Math.random() * funkLines.length)]);
@@ -870,6 +937,292 @@ function Showcase() {
                         value={skeletonVariant}
                         onChange={setSkeletonVariant}
                       />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="LinkButton"
+                    description="A chrome-less textual action that inherits its colour or takes the accent — with optional leading and trailing icon slots."
+                  >
+                    <div className="flex min-h-[48px] items-center">
+                      <LinkButton
+                        color={linkColor}
+                        size={linkSize}
+                        icon={<Icon name="play" size={16} />}
+                        iconRight={<Icon name="chevron-right" size={16} />}
+                      >
+                        Read the liner notes
+                      </LinkButton>
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="color"
+                        options={['inherit', 'accent'] as const}
+                        value={linkColor}
+                        onChange={setLinkColor}
+                      />
+                      <Control
+                        label="size"
+                        options={['sm', 'md', 'lg'] as const}
+                        value={linkSize}
+                        onChange={setLinkSize}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="EmptyState"
+                    description="A centered placeholder for loading, empty, and error states — layout-stable so the surface doesn't jump between them."
+                  >
+                    <div className="max-w-md border border-black/10 p-6 dark:border-white/10">
+                      <EmptyState
+                        status={emptyStatus}
+                        icon={
+                          emptyStatus === 'empty' ? <Icon name="folder" size={32} /> : undefined
+                        }
+                        title={
+                          emptyStatus === 'loading'
+                            ? 'Loading records…'
+                            : emptyStatus === 'error'
+                              ? 'Could not load records'
+                              : 'No records yet'
+                        }
+                        description={
+                          emptyStatus === 'error'
+                            ? 'Something went wrong on our end.'
+                            : emptyStatus === 'empty'
+                              ? 'Add your first record to get started.'
+                              : undefined
+                        }
+                        action={
+                          emptyStatus === 'error' ? (
+                            <Button size="sm" variant="secondary">
+                              Retry
+                            </Button>
+                          ) : emptyStatus === 'empty' ? (
+                            <Button size="sm">Add record</Button>
+                          ) : undefined
+                        }
+                      />
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="status"
+                        options={['loading', 'empty', 'error'] as const}
+                        value={emptyStatus}
+                        onChange={setEmptyStatus}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="StatusDot"
+                    description="A tiny semantic status indicator on the status tokens, optionally pulsing and given an accessible label."
+                  >
+                    <div className="flex min-h-[48px] items-center gap-4">
+                      <StatusDot variant={dotVariant} pulse={dotPulse} label={dotVariant} />
+                      <StatusDot
+                        variant={dotVariant}
+                        size="md"
+                        pulse={dotPulse}
+                        label={dotVariant}
+                      />
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="variant"
+                        options={['neutral', 'info', 'success', 'warning', 'error'] as const}
+                        value={dotVariant}
+                        onChange={setDotVariant}
+                      />
+                      <Control
+                        label="pulse"
+                        options={['false', 'true'] as const}
+                        value={dotPulse ? 'true' : 'false'}
+                        onChange={(v) => setDotPulse(v === 'true')}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="Chip"
+                    description="A toggle for filters and tags — aria-pressed tracks selection, and onToggle reports the next state."
+                  >
+                    <div className="flex flex-wrap gap-2">
+                      {selectOptions
+                        .filter((o) => !o.disabled)
+                        .map((o) => (
+                          <Chip
+                            key={o.value}
+                            selected={chipFilters.includes(o.value)}
+                            icon={<Icon name="check" size={14} />}
+                            onToggle={() =>
+                              setChipFilters((f) =>
+                                f.includes(o.value)
+                                  ? f.filter((x) => x !== o.value)
+                                  : [...f, o.value],
+                              )
+                            }
+                          >
+                            {o.label}
+                          </Chip>
+                        ))}
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="SegmentedControl"
+                    description="A single-select toggle group in a fieldset — one option active at a time, with optional per-option icons."
+                  >
+                    <SegmentedControl
+                      value={segValue}
+                      onChange={setSegValue}
+                      options={[
+                        { value: 'list', label: 'List', icon: <Icon name="note" size={16} /> },
+                        { value: 'grid', label: 'Grid', icon: <Icon name="folder" size={16} /> },
+                        { value: 'flow', label: 'Flow', icon: <Icon name="shuffle" size={16} /> },
+                      ]}
+                    />
+                  </Entry>
+
+                  <Entry
+                    name="Drawer"
+                    description="A portal panel that slides in from any edge — focus trap, scroll lock, and Escape-to-close, with Drawer.Body / Drawer.Footer parts."
+                  >
+                    <div className="flex min-h-[48px] items-center">
+                      <Button variant="secondary" onClick={() => setDrawerOpen(true)}>
+                        Open drawer
+                      </Button>
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="side"
+                        options={['left', 'right', 'top', 'bottom'] as const}
+                        value={drawerSide}
+                        onChange={setDrawerSide}
+                      />
+                    </div>
+                    <Drawer
+                      open={drawerOpen}
+                      onClose={() => setDrawerOpen(false)}
+                      side={drawerSide}
+                      title="Filters"
+                    >
+                      <Drawer.Body>
+                        <p className="opacity-80">
+                          Slides in from the {drawerSide} edge. Tab cycles inside; the backdrop and
+                          Escape both close it.
+                        </p>
+                      </Drawer.Body>
+                      <Drawer.Footer>
+                        <Button variant="ghost" onClick={() => setDrawerOpen(false)}>
+                          Cancel
+                        </Button>
+                        <Button onClick={() => setDrawerOpen(false)}>Apply</Button>
+                      </Drawer.Footer>
+                    </Drawer>
+                  </Entry>
+
+                  <Entry
+                    name="Kbd & InlineCode"
+                    description="Inline typographic primitives — Kbd renders keyboard keys, InlineCode marks up code spans within running text."
+                  >
+                    <p className="max-w-md opacity-80">
+                      Press <Kbd>⌘</Kbd> <Kbd>K</Kbd> to open the palette, then run{' '}
+                      <InlineCode>pnpm dev</InlineCode> to start the server.
+                    </p>
+                  </Entry>
+
+                  <Entry
+                    name="CodeBlock"
+                    description="A code panel with an optional filename header, one-click copy, and per-line add/remove diff styling."
+                  >
+                    <div className="max-w-md">
+                      <CodeBlock
+                        filename="button.tsx"
+                        lines={[
+                          { content: "import { Button } from '@dendelion/func-ui';" },
+                          { content: '' },
+                          { content: '<Button variant="ghost">Old</Button>', diff: 'remove' },
+                          { content: '<Button variant="primary">New</Button>', diff: 'add' },
+                        ]}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="CopyButton"
+                    description="A self-contained copy action that writes to the clipboard and flips to a confirmed state before resetting."
+                  >
+                    <CopyButton
+                      value="pnpm add @dendelion/func-ui"
+                      icon={<Icon name="copy" size={16} />}
+                      copiedIcon={<Icon name="check" size={16} />}
+                    />
+                  </Entry>
+
+                  <Entry
+                    name="Breadcrumb"
+                    description="A navigation trail — the last item is marked aria-current, and the separator is customisable."
+                  >
+                    <Breadcrumb
+                      items={[
+                        { label: 'Home', href: '#' },
+                        { label: 'Records', href: '#' },
+                        { label: 'Parliament' },
+                      ]}
+                    />
+                  </Entry>
+
+                  <Entry
+                    name="Menu"
+                    description="A dropdown menu with full keyboard nav (arrows, Home/End, type-ahead, Escape), item icons, and a danger variant."
+                  >
+                    <Menu
+                      trigger={
+                        <span className="inline-flex items-center gap-2">
+                          Actions <Icon name="chevron-down" size={16} />
+                        </span>
+                      }
+                      items={[
+                        { label: 'Rename', icon: <Icon name="wand" size={16} /> },
+                        { label: 'Duplicate', icon: <Icon name="copy" size={16} /> },
+                        {
+                          label: 'Refresh',
+                          icon: <Icon name="refresh" size={16} />,
+                          disabled: true,
+                        },
+                        { label: 'Delete', icon: <Icon name="close" size={16} />, danger: true },
+                      ]}
+                    />
+                  </Entry>
+
+                  <Entry
+                    name="FileButton"
+                    description="A styled file picker — wraps a hidden native input and reports the chosen FileList through onFiles."
+                  >
+                    <div className="flex min-h-[48px] items-center gap-4">
+                      <FileButton
+                        icon={<Icon name="folder" size={16} />}
+                        onFiles={(files) => setFileName(files[0]?.name ?? null)}
+                      >
+                        Choose file
+                      </FileButton>
+                      {fileName && <span className="font-mono text-sm opacity-70">{fileName}</span>}
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="Icon"
+                    description="The built-in icon set — one stroke-based SVG per name, sized in pixels and inheriting currentColor."
+                  >
+                    <div className="grid grid-cols-4 gap-4 sm:grid-cols-6">
+                      {iconNames.map((name) => (
+                        <div key={name} className="flex flex-col items-center gap-2 text-center">
+                          <Icon name={name} />
+                          <span className="font-mono text-xs opacity-60">{name}</span>
+                        </div>
+                      ))}
                     </div>
                   </Entry>
                 </SectionBlock>
