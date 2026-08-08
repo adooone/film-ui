@@ -3,13 +3,13 @@
   "projectName": "film-ui",
   "initializedAt": "2026-08-04T14:52:35.357Z",
   "nextId": {
-    "idea": 9
+    "idea": 10
   },
   "defaultAgents": {
     "phase": {
       "agent": "claude-code",
       "model": "opus",
-      "effort": "high"
+      "effort": "medium"
     },
     "planDraft": {
       "agent": "claude-code",
@@ -25,6 +25,12 @@
       "agent": "claude-code",
       "model": "sonnet",
       "effort": "low"
+    },
+    "feedback": {
+      "agent": "claude-code",
+      "model": "sonnet",
+      "effort": "medium"
     }
-  }
+  },
+  "port": 3041
 }

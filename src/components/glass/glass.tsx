@@ -21,10 +21,11 @@ export const Glass = forwardRef<HTMLDivElement, GlassProps>(function Glass(
 ) {
   // blur={0} must remove the filter, not apply blur(0px) — a zero-radius
   // backdrop-filter still forces the browser to isolate and re-composite a
-  // render surface on every backdrop change.
+  // render surface on every backdrop change. The frost lives on the ::before
+  // layer, so both knobs travel as custom properties.
   const vars: CSSProperties | undefined =
     blur === 0
-      ? { backdropFilter: 'none', WebkitBackdropFilter: 'none' }
+      ? ({ '--fui-glass-backdrop': 'none' } as CSSProperties)
       : blur != null
         ? ({ '--fui-glass-blur': `${blur}px` } as CSSProperties)
         : undefined;

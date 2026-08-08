@@ -20,7 +20,7 @@ const sections = ['welcome', 'components', 'tokens', 'docs'] as const;
 
 // Long enough that one copy always exceeds the panel width; rendered twice
 // for the seamless -50% marquee loop.
-const marqueeText = 'frosted · noisy · cosy · funky · '.repeat(3);
+const marqueeText = 'funky · noisy · cosy · '.repeat(3);
 
 // Titles and title-refrains only — song titles aren't copyrightable,
 // full lyric verses are.
@@ -294,7 +294,7 @@ function Showcase() {
                   func ui
                 </p>
                 <h1 className="mt-3 font-title text-5xl font-bold leading-tight">
-                  Frosted.
+                  Funky.
                   <br />
                   Noisy.
                   <br />

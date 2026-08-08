@@ -1,0 +1,58 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.statusDot {
+  display: inline-block;
+  flex: none;
+  background-color: currentColor;
+  vertical-align: middle;
+}
+
+.sm {
+  width: 6px;
+  height: 6px;
+}
+
+.md {
+  width: 9px;
+  height: 9px;
+}
+
+.pulse {
+  animation: fui-status-pulse 1.6s ease-in-out infinite;
+
+  @include reduced-motion {
+    animation: none;
+  }
+}
+
+.neutral {
+  color: var(--fui-status-neutral-text);
+}
+
+.info {
+  color: var(--fui-status-info-text);
+}
+
+.success {
+  color: var(--fui-status-success-text);
+}
+
+.warning {
+  color: var(--fui-status-warning-text);
+}
+
+.error {
+  color: var(--fui-status-error-text);
+}
+
+@keyframes fui-status-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.35;
+  }
+}

@@ -18,6 +18,9 @@ export type { ButtonProps } from './components/button';
 export { IconButton } from './components/icon-button';
 export type { IconButtonProps } from './components/icon-button';
 
+export { LinkButton } from './components/link-button';
+export type { LinkButtonProps } from './components/link-button';
+
 export { Stamp } from './components/stamp';
 export type { StampProps, StampVariant } from './components/stamp';
 
@@ -54,6 +57,9 @@ export type { SwitchProps } from './components/switch';
 export { Modal } from './components/modal';
 export type { ModalProps } from './components/modal';
 
+export { Drawer } from './components/drawer';
+export type { DrawerProps, DrawerSide } from './components/drawer';
+
 export { ListItem } from './components/list-item';
 export type { ListItemProps } from './components/list-item';
 
@@ -71,5 +77,44 @@ export type { ProgressProps } from './components/progress';
 
 export { Skeleton } from './components/skeleton';
 export type { SkeletonProps } from './components/skeleton';
+
+export { EmptyState } from './components/empty-state';
+export type { EmptyStateProps, EmptyStateStatus } from './components/empty-state';
+
+export { StatusDot } from './components/status-dot';
+export type { StatusDotProps, StatusDotVariant } from './components/status-dot';
+
+export { Chip } from './components/chip';
+export type { ChipProps } from './components/chip';
+
+export { SegmentedControl } from './components/segmented-control';
+export type {
+  SegmentedControlOption,
+  SegmentedControlProps,
+} from './components/segmented-control';
+
+export { Kbd } from './components/kbd';
+export type { KbdProps } from './components/kbd';
+
+export { InlineCode } from './components/inline-code';
+export type { InlineCodeProps } from './components/inline-code';
+
+export { CodeBlock } from './components/code-block';
+export type { CodeBlockProps, CodeDiff, CodeLine } from './components/code-block';
+
+export { CopyButton } from './components/copy-button';
+export type { CopyButtonProps } from './components/copy-button';
+
+export { Breadcrumb } from './components/breadcrumb';
+export type { BreadcrumbItem, BreadcrumbProps } from './components/breadcrumb';
+
+export { Menu } from './components/menu';
+export type { MenuItem, MenuProps } from './components/menu';
+
+export { FileButton } from './components/file-button';
+export type { FileButtonProps } from './components/file-button';
+
+export { Icon } from './components/icon';
+export type { IconName, IconProps } from './components/icon';
 
 export { cn } from './utils/style-helpers';

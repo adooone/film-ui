@@ -1,0 +1,19 @@
+@use '../../styles/tokens' as *;
+
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5em;
+  padding: 0.1em 0.4em;
+  background-color: var(--fui-surface);
+  color: var(--fui-text);
+  font-family: ui-monospace, 'SF Mono', 'Menlo', 'Consolas', monospace;
+  font-size: 0.8125em;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  box-shadow:
+    inset 0 0 0 1px var(--fui-shadow-color),
+    0 1px 0 0 var(--fui-shadow-color);
+}
