@@ -2,7 +2,7 @@
 id: IDEA-4
 title: Showcase entries for all components
 type: docs
-status: planned
+status: review
 created: 2026-08-04
 tags:
   - showcase
@@ -13,8 +13,8 @@ Every component shipped in IDEA-1..3 needs an entry in the showcase's Components
 
 ### Phases
 - [x] Tier 1 entries: IconButton, Stamp, Tooltip, Toast (+ extend Button entry with danger/icons/isActive)
-- [ ] Tier 2 entries: form controls, Modal, feedback components
-- [ ] Tier 3 entries: gap-fillers + icon-set grid
+- [x] Tier 2 entries: form controls, Modal, feedback components
+- [x] Tier 3 entries: gap-fillers + icon-set grid
 
 ### Log
 - 2026-08-04 — IconButton and Stamp entries live (with variant/size/dot controls, clickable-stamp counter demo); Button entry gained the danger option; Card entry shows sm/md sizes plus a keyboard-accessible clickable card. Tooltip/Toast entries now live too.
