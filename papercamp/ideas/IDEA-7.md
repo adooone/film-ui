@@ -1,6 +1,6 @@
 ---
 id: IDEA-7
-title: Radio-parity components — Slider, CircularProgress, Radio, DataTable, Tabs, Menu
+title: Radio-parity components
 type: feat
 status: planned
 created: 2026-08-04

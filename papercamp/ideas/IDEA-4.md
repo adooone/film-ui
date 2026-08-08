@@ -1,6 +1,6 @@
 ---
 id: IDEA-4
-title: Showcase gallery entries for every release component
+title: Showcase entries for all components
 type: docs
 status: planned
 created: 2026-08-04

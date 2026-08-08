@@ -1,6 +1,6 @@
 ---
 id: IDEA-6
-title: Adopt func-ui in the radio project (replace mojo-ui)
+title: Adopt func-ui in the radio project
 type: feat
 status: idea
 created: 2026-08-04
